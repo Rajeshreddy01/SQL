@@ -1,0 +1,340 @@
+﻿SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+
+13 rows selected.
+
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        10 ASGARD         NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+        30 SALES          CHICAGO                                                                                                                                                                       
+        40 OPERATIONS     BOSTON                                                                                                                                                                        
+        50 DEVOLOPMENT    INDIA                                                                                                                                                                         
+        60 QWERTY         BANGALORE                                                                                                                                                                     
+
+6 rows selected.
+
+SQL> select emp.ename, emp.sal*12, dept.dname from emp cross join dept;
+
+ENAME      EMP.SAL*12 DNAME                                                                                                                                                                             
+---------- ---------- --------------                                                                                                                                                                    
+SMITH            9600 ASGARD                                                                                                                                                                            
+JONES           35700 ASGARD                                                                                                                                                                            
+BLAKE           34200 ASGARD                                                                                                                                                                            
+CLARK           29400 ASGARD                                                                                                                                                                            
+SCOTT           36000 ASGARD                                                                                                                                                                            
+KING            60000 ASGARD                                                                                                                                                                            
+ADAMS           13200 ASGARD                                                                                                                                                                            
+JAMES           11400 ASGARD                                                                                                                                                                            
+FORD            36000 ASGARD                                                                                                                                                                            
+MILLER          15600 ASGARD                                                                                                                                                                            
+RAJESH         119988 ASGARD                                                                                                                                                                            
+SUNIL           60000 ASGARD                                                                                                                                                                            
+KARTHEEK              ASGARD                                                                                                                                                                            
+SMITH            9600 RESEARCH                                                                                                                                                                          
+JONES           35700 RESEARCH                                                                                                                                                                          
+BLAKE           34200 RESEARCH                                                                                                                                                                          
+CLARK           29400 RESEARCH                                                                                                                                                                          
+SCOTT           36000 RESEARCH                                                                                                                                                                          
+KING            60000 RESEARCH                                                                                                                                                                          
+ADAMS           13200 RESEARCH                                                                                                                                                                          
+JAMES           11400 RESEARCH                                                                                                                                                                          
+FORD            36000 RESEARCH                                                                                                                                                                          
+MILLER          15600 RESEARCH                                                                                                                                                                          
+RAJESH         119988 RESEARCH                                                                                                                                                                          
+SUNIL           60000 RESEARCH                                                                                                                                                                          
+KARTHEEK              RESEARCH                                                                                                                                                                          
+SMITH            9600 SALES                                                                                                                                                                             
+JONES           35700 SALES                                                                                                                                                                             
+BLAKE           34200 SALES                                                                                                                                                                             
+CLARK           29400 SALES                                                                                                                                                                             
+SCOTT           36000 SALES                                                                                                                                                                             
+KING            60000 SALES                                                                                                                                                                             
+ADAMS           13200 SALES                                                                                                                                                                             
+JAMES           11400 SALES                                                                                                                                                                             
+FORD            36000 SALES                                                                                                                                                                             
+MILLER          15600 SALES                                                                                                                                                                             
+RAJESH         119988 SALES                                                                                                                                                                             
+SUNIL           60000 SALES                                                                                                                                                                             
+KARTHEEK              SALES                                                                                                                                                                             
+SMITH            9600 OPERATIONS                                                                                                                                                                        
+JONES           35700 OPERATIONS                                                                                                                                                                        
+BLAKE           34200 OPERATIONS                                                                                                                                                                        
+CLARK           29400 OPERATIONS                                                                                                                                                                        
+SCOTT           36000 OPERATIONS                                                                                                                                                                        
+KING            60000 OPERATIONS                                                                                                                                                                        
+ADAMS           13200 OPERATIONS                                                                                                                                                                        
+JAMES           11400 OPERATIONS                                                                                                                                                                        
+FORD            36000 OPERATIONS                                                                                                                                                                        
+MILLER          15600 OPERATIONS                                                                                                                                                                        
+RAJESH         119988 OPERATIONS                                                                                                                                                                        
+SUNIL           60000 OPERATIONS                                                                                                                                                                        
+KARTHEEK              OPERATIONS                                                                                                                                                                        
+SMITH            9600 DEVOLOPMENT                                                                                                                                                                       
+JONES           35700 DEVOLOPMENT                                                                                                                                                                       
+BLAKE           34200 DEVOLOPMENT                                                                                                                                                                       
+CLARK           29400 DEVOLOPMENT                                                                                                                                                                       
+SCOTT           36000 DEVOLOPMENT                                                                                                                                                                       
+KING            60000 DEVOLOPMENT                                                                                                                                                                       
+ADAMS           13200 DEVOLOPMENT                                                                                                                                                                       
+JAMES           11400 DEVOLOPMENT                                                                                                                                                                       
+FORD            36000 DEVOLOPMENT                                                                                                                                                                       
+MILLER          15600 DEVOLOPMENT                                                                                                                                                                       
+RAJESH         119988 DEVOLOPMENT                                                                                                                                                                       
+SUNIL           60000 DEVOLOPMENT                                                                                                                                                                       
+KARTHEEK              DEVOLOPMENT                                                                                                                                                                       
+SMITH            9600 QWERTY                                                                                                                                                                            
+JONES           35700 QWERTY                                                                                                                                                                            
+BLAKE           34200 QWERTY                                                                                                                                                                            
+CLARK           29400 QWERTY                                                                                                                                                                            
+SCOTT           36000 QWERTY                                                                                                                                                                            
+KING            60000 QWERTY                                                                                                                                                                            
+ADAMS           13200 QWERTY                                                                                                                                                                            
+JAMES           11400 QWERTY                                                                                                                                                                            
+FORD            36000 QWERTY                                                                                                                                                                            
+MILLER          15600 QWERTY                                                                                                                                                                            
+RAJESH         119988 QWERTY                                                                                                                                                                            
+SUNIL           60000 QWERTY                                                                                                                                                                            
+KARTHEEK              QWERTY                                                                                                                                                                            
+
+78 rows selected.
+
+SQL> select emp.ename, emp.sal*6, dept.sal from emp,dept where emp.ename = 'smith';
+select emp.ename, emp.sal*6, dept.sal from emp,dept where emp.ename = 'smith'
+                             *
+ERROR at line 1:
+ORA-00904: "DEPT"."SAL": invalid identifier 
+
+
+SQL> select emp.ename, emp.sal*6, dept.loc from emp,dept where emp.ename = 'smith';
+
+no rows selected
+
+SQL> select emp.ename, emp.hiredate, dept.* from emp,dept;
+
+ENAME      HIREDATE      DEPTNO DNAME          LOC                                                                                                                                                      
+---------- --------- ---------- -------------- -------------                                                                                                                                            
+SMITH      17-DEC-80         10 ASGARD         NEW YORK                                                                                                                                                 
+JONES      02-APR-81         10 ASGARD         NEW YORK                                                                                                                                                 
+BLAKE      01-MAY-81         10 ASGARD         NEW YORK                                                                                                                                                 
+CLARK      09-JUN-81         10 ASGARD         NEW YORK                                                                                                                                                 
+SCOTT      19-APR-87         10 ASGARD         NEW YORK                                                                                                                                                 
+KING       17-NOV-81         10 ASGARD         NEW YORK                                                                                                                                                 
+ADAMS      23-MAY-87         10 ASGARD         NEW YORK                                                                                                                                                 
+JAMES      03-DEC-81         10 ASGARD         NEW YORK                                                                                                                                                 
+FORD       03-DEC-81         10 ASGARD         NEW YORK                                                                                                                                                 
+MILLER     23-JAN-82         10 ASGARD         NEW YORK                                                                                                                                                 
+RAJESH     12-MAY-00         10 ASGARD         NEW YORK                                                                                                                                                 
+SUNIL                        10 ASGARD         NEW YORK                                                                                                                                                 
+KARTHEEK                     10 ASGARD         NEW YORK                                                                                                                                                 
+SMITH      17-DEC-80         20 RESEARCH       DALLAS                                                                                                                                                   
+JONES      02-APR-81         20 RESEARCH       DALLAS                                                                                                                                                   
+BLAKE      01-MAY-81         20 RESEARCH       DALLAS                                                                                                                                                   
+CLARK      09-JUN-81         20 RESEARCH       DALLAS                                                                                                                                                   
+SCOTT      19-APR-87         20 RESEARCH       DALLAS                                                                                                                                                   
+KING       17-NOV-81         20 RESEARCH       DALLAS                                                                                                                                                   
+ADAMS      23-MAY-87         20 RESEARCH       DALLAS                                                                                                                                                   
+JAMES      03-DEC-81         20 RESEARCH       DALLAS                                                                                                                                                   
+FORD       03-DEC-81         20 RESEARCH       DALLAS                                                                                                                                                   
+MILLER     23-JAN-82         20 RESEARCH       DALLAS                                                                                                                                                   
+RAJESH     12-MAY-00         20 RESEARCH       DALLAS                                                                                                                                                   
+SUNIL                        20 RESEARCH       DALLAS                                                                                                                                                   
+KARTHEEK                     20 RESEARCH       DALLAS                                                                                                                                                   
+SMITH      17-DEC-80         30 SALES          CHICAGO                                                                                                                                                  
+JONES      02-APR-81         30 SALES          CHICAGO                                                                                                                                                  
+BLAKE      01-MAY-81         30 SALES          CHICAGO                                                                                                                                                  
+CLARK      09-JUN-81         30 SALES          CHICAGO                                                                                                                                                  
+SCOTT      19-APR-87         30 SALES          CHICAGO                                                                                                                                                  
+KING       17-NOV-81         30 SALES          CHICAGO                                                                                                                                                  
+ADAMS      23-MAY-87         30 SALES          CHICAGO                                                                                                                                                  
+JAMES      03-DEC-81         30 SALES          CHICAGO                                                                                                                                                  
+FORD       03-DEC-81         30 SALES          CHICAGO                                                                                                                                                  
+MILLER     23-JAN-82         30 SALES          CHICAGO                                                                                                                                                  
+RAJESH     12-MAY-00         30 SALES          CHICAGO                                                                                                                                                  
+SUNIL                        30 SALES          CHICAGO                                                                                                                                                  
+KARTHEEK                     30 SALES          CHICAGO                                                                                                                                                  
+SMITH      17-DEC-80         40 OPERATIONS     BOSTON                                                                                                                                                   
+JONES      02-APR-81         40 OPERATIONS     BOSTON                                                                                                                                                   
+BLAKE      01-MAY-81         40 OPERATIONS     BOSTON                                                                                                                                                   
+CLARK      09-JUN-81         40 OPERATIONS     BOSTON                                                                                                                                                   
+SCOTT      19-APR-87         40 OPERATIONS     BOSTON                                                                                                                                                   
+KING       17-NOV-81         40 OPERATIONS     BOSTON                                                                                                                                                   
+ADAMS      23-MAY-87         40 OPERATIONS     BOSTON                                                                                                                                                   
+JAMES      03-DEC-81         40 OPERATIONS     BOSTON                                                                                                                                                   
+FORD       03-DEC-81         40 OPERATIONS     BOSTON                                                                                                                                                   
+MILLER     23-JAN-82         40 OPERATIONS     BOSTON                                                                                                                                                   
+RAJESH     12-MAY-00         40 OPERATIONS     BOSTON                                                                                                                                                   
+SUNIL                        40 OPERATIONS     BOSTON                                                                                                                                                   
+KARTHEEK                     40 OPERATIONS     BOSTON                                                                                                                                                   
+SMITH      17-DEC-80         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+JONES      02-APR-81         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+BLAKE      01-MAY-81         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+CLARK      09-JUN-81         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+SCOTT      19-APR-87         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+KING       17-NOV-81         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+ADAMS      23-MAY-87         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+JAMES      03-DEC-81         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+FORD       03-DEC-81         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+MILLER     23-JAN-82         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+RAJESH     12-MAY-00         50 DEVOLOPMENT    INDIA                                                                                                                                                    
+SUNIL                        50 DEVOLOPMENT    INDIA                                                                                                                                                    
+KARTHEEK                     50 DEVOLOPMENT    INDIA                                                                                                                                                    
+SMITH      17-DEC-80         60 QWERTY         BANGALORE                                                                                                                                                
+JONES      02-APR-81         60 QWERTY         BANGALORE                                                                                                                                                
+BLAKE      01-MAY-81         60 QWERTY         BANGALORE                                                                                                                                                
+CLARK      09-JUN-81         60 QWERTY         BANGALORE                                                                                                                                                
+SCOTT      19-APR-87         60 QWERTY         BANGALORE                                                                                                                                                
+KING       17-NOV-81         60 QWERTY         BANGALORE                                                                                                                                                
+ADAMS      23-MAY-87         60 QWERTY         BANGALORE                                                                                                                                                
+JAMES      03-DEC-81         60 QWERTY         BANGALORE                                                                                                                                                
+FORD       03-DEC-81         60 QWERTY         BANGALORE                                                                                                                                                
+MILLER     23-JAN-82         60 QWERTY         BANGALORE                                                                                                                                                
+RAJESH     12-MAY-00         60 QWERTY         BANGALORE                                                                                                                                                
+SUNIL                        60 QWERTY         BANGALORE                                                                                                                                                
+KARTHEEK                     60 QWERTY         BANGALORE                                                                                                                                                
+
+78 rows selected.
+
+SQL> select emp.*, dept.* from emp, dept where emp.deptno=dept.deptno;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         30 SALES          CHICAGO                                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         10 ASGARD         NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         10 ASGARD         NEW YORK                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         10 ASGARD         NEW YORK                                                                                
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10         10 ASGARD         NEW YORK                                                                                
+
+11 rows selected.
+
+SQL> select emp.ename, dept.loc fro emp,dept where emp.deptno = dept.deptno;
+select emp.ename, dept.loc fro emp,dept where emp.deptno = dept.deptno
+                               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select emp.ename, dept.loc from  emp,dept where emp.deptno = dept.deptno;
+
+ENAME      LOC                                                                                                                                                                                          
+---------- -------------                                                                                                                                                                                
+SMITH      DALLAS                                                                                                                                                                                       
+JONES      DALLAS                                                                                                                                                                                       
+BLAKE      CHICAGO                                                                                                                                                                                      
+CLARK      NEW YORK                                                                                                                                                                                     
+SCOTT      DALLAS                                                                                                                                                                                       
+KING       NEW YORK                                                                                                                                                                                     
+ADAMS      DALLAS                                                                                                                                                                                       
+JAMES      CHICAGO                                                                                                                                                                                      
+FORD       DALLAS                                                                                                                                                                                       
+MILLER     NEW YORK                                                                                                                                                                                     
+RAJESH     NEW YORK                                                                                                                                                                                     
+
+11 rows selected.
+
+SQL> select emp.ename, emp.job, dept.loc, dept.dname
+  2  from emp, dept where dname = 'sales' and emp.deptno = dept.deptno;
+
+no rows selected
+
+SQL> select emp.*, dept.dname, dept.deptno from emp, dept where job in ('sales','manager') and emp.deptno = dept.deptno;
+
+no rows selected
+
+SQL> select emp.* from emp where job = 'manager';
+
+no rows selected
+
+SQL> select emp.ename, emp.job, dept.dname, dept.deptno from emp full outer join dept on emp.deptno = dept.deptno;
+
+ENAME      JOB       DNAME              DEPTNO                                                                                                                                                          
+---------- --------- -------------- ----------                                                                                                                                                          
+SMITH      CLERK     RESEARCH               20                                                                                                                                                          
+JONES      MANAGER   RESEARCH               20                                                                                                                                                          
+BLAKE      MANAGER   SALES                  30                                                                                                                                                          
+CLARK      MANAGER   ASGARD                 10                                                                                                                                                          
+SCOTT      ANALYST   RESEARCH               20                                                                                                                                                          
+KING       PRESIDENT ASGARD                 10                                                                                                                                                          
+ADAMS      CLERK     RESEARCH               20                                                                                                                                                          
+JAMES      CLERK     SALES                  30                                                                                                                                                          
+FORD       ANALYST   RESEARCH               20                                                                                                                                                          
+MILLER     CLERK     ASGARD                 10                                                                                                                                                          
+RAJESH     CHAIRMAN  ASGARD                 10                                                                                                                                                          
+SUNIL      SPEAKER                                                                                                                                                                                      
+KARTHEEK                                                                                                                                                                                                
+                     OPERATIONS             40                                                                                                                                                          
+                     DEVOLOPMENT            50                                                                                                                                                          
+                     QWERTY                 60                                                                                                                                                          
+
+16 rows selected.
+
+SQL> select emp.*, dept.* from emp full outer join dept on emp.deptno = dept.deptno;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         30 SALES          CHICAGO                                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         10 ASGARD         NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         10 ASGARD         NEW YORK                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         10 ASGARD         NEW YORK                                                                                
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10         10 ASGARD         NEW YORK                                                                                
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+                                                                                              40 OPERATIONS     BOSTON                                                                                  
+                                                                                              50 DEVOLOPMENT    INDIA                                                                                   
+                                                                                              60 QWERTY         BANGALORE                                                                               
+
+16 rows selected.
+
+SQL> select * from emp full outer join dept on emp.deptno = dept.deptno;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         30 SALES          CHICAGO                                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         10 ASGARD         NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         10 ASGARD         NEW YORK                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         10 ASGARD         NEW YORK                                                                                
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10         10 ASGARD         NEW YORK                                                                                
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+                                                                                              40 OPERATIONS     BOSTON                                                                                  
+                                                                                              50 DEVOLOPMENT    INDIA                                                                                   
+                                                                                              60 QWERTY         BANGALORE                                                                               
+
+16 rows selected.
+
+SQL> spool_off
