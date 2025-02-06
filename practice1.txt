@@ -1,0 +1,83 @@
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+
+13 rows selected.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BULLS                          TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> select * from bulls;
+
+no rows selected
+
+SQL> insert into bulls bname is dheera;
+insert into bulls bname is dheera
+                        *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> insert into bulls where bname= dheera;
+insert into bulls where bname= dheera
+                  *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> insert into bulls (bmane, owner, won) values ('dheera','dvr', 100);
+insert into bulls (bmane, owner, won) values ('dheera','dvr', 100)
+                                 *
+ERROR at line 1:
+ORA-00904: "WON": invalid identifier 
+
+
+SQL> insert into bulls (bname, owner, size) values ('dheera', 'dvr', 61);
+insert into bulls (bname, owner, size) values ('dheera', 'dvr', 61)
+                                 *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> INSERT INTO bulls (bname, owner, size)
+  2  VALUES ('dheera', 'dvr', 61);
+INSERT INTO bulls (bname, owner, size)
+                                 *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> INSERT INTO bulls (bname, owner, size)
+  2  VALUES ('dheera', 'dvr', 61);
+INSERT INTO bulls (bname, owner, size)
+                                 *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> spool off
