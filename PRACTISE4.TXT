@@ -1,0 +1,319 @@
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+
+13 rows selected.
+
+SQL> INSERT INTO EMP VALUES (7988, 'SUNIL', 'SPEAKER', 7900, '16-JUN-01', 3000, 0, 20);
+INSERT INTO EMP VALUES (7988, 'SUNIL', 'SPEAKER', 7900, '16-JUN-01', 3000, 0, 20)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.PK_EMP) violated 
+
+
+SQL> INSERT INTO EMP VALUES(7800, 'SIDDU', 'ENGINEER', 7839, '08-FEB-24', 2350, 200, 10);
+
+1 row created.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+
+14 rows selected.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        10 ASGARD         NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+        30 SALES          CHICAGO                                                                                                                                                                       
+        40 OPERATIONS     BOSTON                                                                                                                                                                        
+        50 DEVOLOPMENT    INDIA                                                                                                                                                                         
+        60 QWERTY         BANGALORE                                                                                                                                                                     
+
+6 rows selected.
+
+SQL> INSERT INTO DEPT VALUES(20, 'TESTING','ASSAM');
+INSERT INTO DEPT VALUES(20, 'TESTING','ASSAM')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.PK_DEPT) violated 
+
+
+SQL> INSERT INTO DEPT VALUES(11, 'TESTING', 'ASSAM');
+
+1 row created.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        11 TESTING        ASSAM                                                                                                                                                                         
+        10 ASGARD         NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+        30 SALES          CHICAGO                                                                                                                                                                       
+        40 OPERATIONS     BOSTON                                                                                                                                                                        
+        50 DEVOLOPMENT    INDIA                                                                                                                                                                         
+        60 QWERTY         BANGALORE                                                                                                                                                                     
+
+7 rows selected.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BULLS                          TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> SELECT * FROM BONUS;
+
+ENAME      JOB              SAL       COMM                                                                                                                                                              
+---------- --------- ---------- ----------                                                                                                                                                              
+A          CLERK           3000        100                                                                                                                                                              
+B          MANAGER         4000        300                                                                                                                                                              
+C          SALESMAN        3500        589                                                                                                                                                              
+
+SQL> INSERT INTO BONUS VALUES('D','ENGINEER',3456,160);
+
+1 row created.
+
+SQL> SELECT * FROM BONUS;
+
+ENAME      JOB              SAL       COMM                                                                                                                                                              
+---------- --------- ---------- ----------                                                                                                                                                              
+D          ENGINEER        3456        160                                                                                                                                                              
+A          CLERK           3000        100                                                                                                                                                              
+B          MANAGER         4000        300                                                                                                                                                              
+C          SALESMAN        3500        589                                                                                                                                                              
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER                              5000                                                                                                                                         
+      4566 KARTHEEK                                                                                                                                                                                     
+
+14 rows selected.
+
+SQL> UPDATE EMP SET HIREDATE = '04-FEB-22' WHERE ENAME = 'SUNIL';
+
+1 row updated.
+
+SQL> UPDATE EMP SET DEPTNO = 30 WHERE ENAME = 'KARTHEEK';
+
+1 row updated.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER              04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                                                                30                                                                                                                   
+
+14 rows selected.
+
+SQL> UPDATE EMP SET MGR = 7876 WHERE EMPNO = 4566;
+
+1 row updated.
+
+SQL> UPDATE EMP SET MGR = 7902 WHERE ENAME = 'SUNIL';
+
+1 row updated.
+
+SQL> INSERT INTO EMP VALUES(4567, 'SALAAR', 'HERO', 7839, '12-DEC-23', 7000, 1500,20);
+
+1 row created.
+
+SQL> INSERT INTO EMP(ENAME, JOB, SAL) VALUES('KANSAAR','PROTECT',5674.43);
+INSERT INTO EMP(ENAME, JOB, SAL) VALUES('KANSAAR','PROTECT',5674.43)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."EMP"."EMPNO") 
+
+
+SQL> INSERT INTO EMP(EMPNO, ENAME, SAL) VALUES(7800,'KANSAAR',6789);
+INSERT INTO EMP(EMPNO, ENAME, SAL) VALUES(7800,'KANSAAR',6789)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.PK_EMP) violated 
+
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      4567 SALAAR     HERO            7839 12-DEC-23       7000       1500         20                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+15 rows selected.
+
+SQL> INSERT INTO EMP(EMPNO) VALUES(4567);
+INSERT INTO EMP(EMPNO) VALUES(4567)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.PK_EMP) violated 
+
+
+SQL>  INSERT INTO EMP(EMPNO, ENAME, SAL) VALUES(7654,'KANSAAR',6789);
+
+1 row created.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      4567 SALAAR     HERO            7839 12-DEC-23       7000       1500         20                                                                                                                   
+      7654 KANSAAR                                         6789                                                                                                                                         
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+16 rows selected.
+
+SQL> UPDATE EMP SET JOB = 'PROTECTING' WHERE ENAME = 'KANSAAR';
+UPDATE EMP SET JOB = 'PROTECTING' WHERE ENAME = 'KANSAAR'
+                     *
+ERROR at line 1:
+ORA-12899: value too large for column "SCOTT"."EMP"."JOB" (actual: 10, maximum: 9) 
+
+
+SQL> UPDATE EMP SET JOB = 'PROTECT', WHERE ENAME = 'KANSAAR';
+UPDATE EMP SET JOB = 'PROTECT', WHERE ENAME = 'KANSAAR'
+                                *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> UPDATE EMP SET JOB = 'PROTECT' WHERE ENAME = 'KANSAAR';
+
+1 row updated.
+
+SQL> UPDATE EMP SET JOB = 'YOUTUBER' WHERE ENAME = 'KANSAAR';
+
+1 row updated.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      4567 SALAAR     HERO            7839 12-DEC-23       7000       1500         20                                                                                                                   
+      7654 KANSAAR    YOUTUBER                             6789                                                                                                                                         
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+16 rows selected.
+
+SQL> DELETE FROM EMP WHERE ENAME = 'KANSAAR';
+
+1 row deleted.
+
+SQL> DELETE FROM EMP WHERE ENAME = 'SALAAR';
+
+1 row deleted.
+
+SQL> SAVE POINT 4566;
+SP2-0116: Illegal SAVE command
+SQL> SAVE POINT 'KARTHEEK';
+SP2-0116: Illegal SAVE command
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
