@@ -1,0 +1,791 @@
+SQL> set pages 200 lines 200;
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+14 rows selected.
+
+SQL> set autotrace on explain;
+SQL> select * from emp where sal >2000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+
+9 rows selected.
+
+
+Execution Plan
+----------------------------------------------------------                                                                                                                                              
+Plan hash value: 3956160932                                                                                                                                                                             
+                                                                                                                                                                                                        
+--------------------------------------------------------------------------                                                                                                                              
+| Id  | Operation         | Name | Rows  | Bytes | Cost (%CPU)| Time     |                                                                                                                              
+--------------------------------------------------------------------------                                                                                                                              
+|   0 | SELECT STATEMENT  |      |     7 |   238 |     3   (0)| 00:00:01 |                                                                                                                              
+|*  1 |  TABLE ACCESS FULL| EMP  |     7 |   238 |     3   (0)| 00:00:01 |                                                                                                                              
+--------------------------------------------------------------------------                                                                                                                              
+                                                                                                                                                                                                        
+Predicate Information (identified by operation id):                                                                                                                                                     
+---------------------------------------------------                                                                                                                                                     
+                                                                                                                                                                                                        
+   1 - filter("SAL">2000)                                                                                                                                                                               
+
+SQL> create index salary on emp(SAL);
+
+Index created.
+
+SQL> select * from emp where sal>2000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+
+9 rows selected.
+
+
+Execution Plan
+----------------------------------------------------------                                                                                                                                              
+Plan hash value: 102055643                                                                                                                                                                              
+                                                                                                                                                                                                        
+--------------------------------------------------------------------------------------                                                                                                                  
+| Id  | Operation                   | Name   | Rows  | Bytes | Cost (%CPU)| Time     |                                                                                                                  
+--------------------------------------------------------------------------------------                                                                                                                  
+|   0 | SELECT STATEMENT            |        |     7 |   238 |     3   (0)| 00:00:01 |                                                                                                                  
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP    |     7 |   238 |     3   (0)| 00:00:01 |                                                                                                                  
+|*  2 |   INDEX RANGE SCAN          | SALARY |     7 |       |     1   (0)| 00:00:01 |                                                                                                                  
+--------------------------------------------------------------------------------------                                                                                                                  
+                                                                                                                                                                                                        
+Predicate Information (identified by operation id):                                                                                                                                                     
+---------------------------------------------------                                                                                                                                                     
+                                                                                                                                                                                                        
+   2 - access("SAL">2000)                                                                                                                                                                               
+
+SQL> drop index salary;
+
+Index dropped.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+14 rows selected.
+
+
+Execution Plan
+----------------------------------------------------------                                                                                                                                              
+Plan hash value: 3956160932                                                                                                                                                                             
+                                                                                                                                                                                                        
+--------------------------------------------------------------------------                                                                                                                              
+| Id  | Operation         | Name | Rows  | Bytes | Cost (%CPU)| Time     |                                                                                                                              
+--------------------------------------------------------------------------                                                                                                                              
+|   0 | SELECT STATEMENT  |      |    13 |   442 |     3   (0)| 00:00:01 |                                                                                                                              
+|   1 |  TABLE ACCESS FULL| EMP  |    13 |   442 |     3   (0)| 00:00:01 |                                                                                                                              
+--------------------------------------------------------------------------                                                                                                                              
+
+SQL> set autotrace off explain;
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+14 rows selected.
+
+SQL> select 'DDL' from dual;
+
+'DD                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+DDL                                                                                                                                                                                                     
+
+SQL> select * from tables;
+select * from tables
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BULLS                          TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> drop table bulls;
+
+Table dropped.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BIN$EIoA0jP5RrSJrLaGglhAgQ==$0 TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> show recyclebin;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+BULLS            BIN$EIoA0jP5RrSJrLaGglhAgQ==$0 TABLE        2025-02-10:10:47:38                                                                                                                        
+SQL> purge table bulls;
+
+Table purged.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+
+6 rows selected.
+
+SQL> create table bulls( bid number(10) primary key, bname varchar(20) not null, bsize number(10) not null, price number(7,2));
+
+Table created.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BULLS                          TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> insert into bulls(101, 'dheera', 61, 100000);
+insert into bulls(101, 'dheera', 61, 100000)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> insert into bulls values(101, 'dheera', 61, 100000);
+insert into bulls values(101, 'dheera', 61, 100000)
+                                            *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column 
+
+
+SQL> insert into bulls values(101, 'dheera', 61, 100.3);
+
+1 row created.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 dheera                       61      100.3                                                                                                                                                   
+
+SQL> insert into bulls values(102,'simha',62,80.5);
+
+1 row created.
+
+SQL> insert into bulls values(103,'rana',63,50);
+
+1 row created.
+
+SQL> insert into bulls(bid,bname,price) values(104,'chatrpati',70);
+insert into bulls(bid,bname,price) values(104,'chatrpati',70)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."BULLS"."BSIZE") 
+
+
+SQL> insert into bulls values(104,'chatrapati',63,80.8);
+
+1 row created.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+14 rows selected.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 dheera                       61      100.3                                                                                                                                                   
+       102 simha                        62       80.5                                                                                                                                                   
+       103 rana                         63         50                                                                                                                                                   
+       104 chatrapati                   63       80.8                                                                                                                                                   
+
+SQL> update bulls set price=60 where bid = 103;
+
+1 row updated.
+
+SQL> update bulls set bname = 'akanda' where bid=103;
+
+1 row updated.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 dheera                       61      100.3                                                                                                                                                   
+       102 simha                        62       80.5                                                                                                                                                   
+       103 akanda                       63         60                                                                                                                                                   
+       104 chatrapati                   63       80.8                                                                                                                                                   
+
+SQL> insert into bulls values(105,'badsha',64,40.2);
+
+1 row created.
+
+SQL> insert into bulls values(106,'gandivam',62, 120.4);
+
+1 row created.
+
+SQL> insert into bulls values(107, 'nandi', 61, 40);
+
+1 row created.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 dheera                       61      100.3                                                                                                                                                   
+       102 simha                        62       80.5                                                                                                                                                   
+       103 akanda                       63         60                                                                                                                                                   
+       104 chatrapati                   63       80.8                                                                                                                                                   
+       105 badsha                       64       40.2                                                                                                                                                   
+       106 gandivam                     62      120.4                                                                                                                                                   
+       107 nandi                        61         40                                                                                                                                                   
+
+7 rows selected.
+
+SQL> update bulls set bname = 'tyagi' where bid=107;
+
+1 row updated.
+
+SQL> delete from bulls where bid = 105;
+
+1 row deleted.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 dheera                       61      100.3                                                                                                                                                   
+       102 simha                        62       80.5                                                                                                                                                   
+       103 akanda                       63         60                                                                                                                                                   
+       104 chatrapati                   63       80.8                                                                                                                                                   
+       106 gandivam                     62      120.4                                                                                                                                                   
+       107 tyagi                        61         40                                                                                                                                                   
+
+6 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from bulls;
+
+no rows selected
+
+SQL> insert into bulls values(101,'DHEERA', 62, 99.9);
+
+1 row created.
+
+SQL>  insert into bulls values(102,'SIMHA',62,89);
+
+1 row created.
+
+SQL>  insert into bulls values(103,'SAMARA',61,40);
+
+1 row created.
+
+SQL>  insert into bulls values(104,'CHATRAPATI', 63, 80);
+
+1 row created.
+
+SQL>  insert into bulls values(105,'TYAGI',61, 60);
+
+1 row created.
+
+SQL>  insert into bulls values(106, 'RNR GANDIVAM', 62, 120.65);
+
+1 row created.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89                                                                                                                                                   
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65                                                                                                                                                   
+
+6 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE BULLS SET BNAME = 'AKANDA' WHERE BID = 103;
+
+1 row updated.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89                                                                                                                                                   
+       103 AKANDA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65                                                                                                                                                   
+
+6 rows selected.
+
+SQL> DELETE FROM BULLS WHERE BSIZE =61;
+
+2 rows deleted.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89                                                                                                                                                   
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65                                                                                                                                                   
+
+6 rows selected.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BULLS                          TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE                                                                                                                                                   
+---------- -------------------- ---------- ----------                                                                                                                                                   
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89                                                                                                                                                   
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65                                                                                                                                                   
+
+6 rows selected.
+
+SQL> alter table bulls add wins number(10);
+
+Table altered.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE       WINS                                                                                                                                        
+---------- -------------------- ---------- ---------- ----------                                                                                                                                        
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89                                                                                                                                                   
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65                                                                                                                                                   
+
+6 rows selected.
+
+SQL> update bulls wins = 161 where bid = 106;
+update bulls wins = 161 where bid = 106
+                  *
+ERROR at line 1:
+ORA-00971: missing SET keyword 
+
+
+SQL> update bulls set wins = 161 where bid = 106;
+
+1 row updated.
+
+SQL> update bulls set wins = 120 where bid = 102;
+
+1 row updated.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE       WINS                                                                                                                                        
+---------- -------------------- ---------- ---------- ----------                                                                                                                                        
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65        161                                                                                                                                        
+
+6 rows selected.
+
+SQL> alter table bulls add mahanandi number(4);
+
+Table altered.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE       WINS  MAHANANDI                                                                                                                             
+---------- -------------------- ---------- ---------- ---------- ----------                                                                                                                             
+       101 DHEERA                       62       99.9                                                                                                                                                   
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                                                                                                                                                   
+       105 TYAGI                        61         60                                                                                                                                                   
+       106 RNR GANDIVAM                 62     120.65        161                                                                                                                                        
+
+6 rows selected.
+
+SQL> update bulls set mahanandi = 3 where bid = 101;
+
+1 row updated.
+
+SQL> update bulls set mahanandi = 1 where bid = 104;
+
+1 row updated.
+
+SQL> update bulls set mahanandi = 1 where bid = 105;
+
+1 row updated.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE       WINS  MAHANANDI                                                                                                                             
+---------- -------------------- ---------- ---------- ---------- ----------                                                                                                                             
+       101 DHEERA                       62       99.9                     3                                                                                                                             
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                     1                                                                                                                             
+       105 TYAGI                        61         60                     1                                                                                                                             
+       106 RNR GANDIVAM                 62     120.65        161                                                                                                                                        
+
+6 rows selected.
+
+SQL> update bulls set mahanandi = 3 where bid = 106;
+
+1 row updated.
+
+SQL> select * from bulls;
+
+       BID BNAME                     BSIZE      PRICE       WINS  MAHANANDI                                                                                                                             
+---------- -------------------- ---------- ---------- ---------- ----------                                                                                                                             
+       101 DHEERA                       62       99.9                     3                                                                                                                             
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                     1                                                                                                                             
+       105 TYAGI                        61         60                     1                                                                                                                             
+       106 RNR GANDIVAM                 62     120.65        161          3                                                                                                                             
+
+6 rows selected.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+ITEMS                          TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+BULLS                          TABLE                                                                                                                                                                    
+
+7 rows selected.
+
+SQL> select * from items;
+
+       IID INAME          IPRICE                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+       121 SOAP             79.9                                                                                                                                                                        
+
+SQL> alter table items add TFM NUMBER(7,2);
+
+Table altered.
+
+SQL> INSERT INTO ITEMS VALUES(122,'SHAMPOO',199,72);
+
+1 row created.
+
+SQL> SELECT * FROM ITEMS;
+
+       IID INAME          IPRICE        TFM                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+       122 SHAMPOO           199         72                                                                                                                                                             
+       121 SOAP             79.9                                                                                                                                                                        
+
+SQL> UPDATE BULLS SET TFM = 80 WHERE IID = 121;
+UPDATE BULLS SET TFM = 80 WHERE IID = 121
+                                *
+ERROR at line 1:
+ORA-00904: "IID": invalid identifier 
+
+
+SQL> UPDATE BULLS SET TFM = 80 WHERE INAME = 'SOAP';
+UPDATE BULLS SET TFM = 80 WHERE INAME = 'SOAP'
+                                *
+ERROR at line 1:
+ORA-00904: "INAME": invalid identifier 
+
+
+SQL> UPDATE ITEMS SET TFM = 80 WHERE IID=121;
+
+1 row updated.
+
+SQL> SELECT * FROM ITEMS;
+
+       IID INAME          IPRICE        TFM                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+       122 SHAMPOO           199         72                                                                                                                                                             
+       121 SOAP             79.9         80                                                                                                                                                             
+
+SQL> DELETE FROM EMP WHERE SAL>3000;
+
+3 rows deleted.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+11 rows selected.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10                                                                                                                   
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                                                                                                                         
+      4566 KARTHEEK                   7876                                         30                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT * FROM ITEMS;
+
+       IID INAME          IPRICE        TFM                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+       121 SOAP             79.9                                                                                                                                                                        
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                     BSIZE      PRICE       WINS  MAHANANDI                                                                                                                             
+---------- -------------------- ---------- ---------- ---------- ----------                                                                                                                             
+       101 DHEERA                       62       99.9                     3                                                                                                                             
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                     1                                                                                                                             
+       105 TYAGI                        61         60                     1                                                                                                                             
+       106 RNR GANDIVAM                 62     120.65        161          3                                                                                                                             
+
+6 rows selected.
+
+SQL> ALTER TABLE ITEMS DROP COLOUMN TFM;
+ALTER TABLE ITEMS DROP COLOUMN TFM
+                       *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> ALTER TABLE ITEMS DROP COLUMN TFM;
+
+Table altered.
+
+SQL> SELECT * FROM ITEMS;
+
+       IID INAME          IPRICE                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+       121 SOAP             79.9                                                                                                                                                                        
+
+SQL> ALTER TABLE ITEMS DROP COLUMN IID;
+
+Table altered.
+
+SQL> SELECT * FROM ITEMS;
+
+INAME          IPRICE                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+SOAP             79.9                                                                                                                                                                                   
+
+SQL> ALTER TABLE ITEMS RENAME COLUMN IPRICE TO PRICE;
+
+Table altered.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                     BSIZE      PRICE       WINS  MAHANANDI                                                                                                                             
+---------- -------------------- ---------- ---------- ---------- ----------                                                                                                                             
+       101 DHEERA                       62       99.9                     3                                                                                                                             
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                     1                                                                                                                             
+       105 TYAGI                        61         60                     1                                                                                                                             
+       106 RNR GANDIVAM                 62     120.65        161          3                                                                                                                             
+
+6 rows selected.
+
+SQL> ALTER TABLE BULLS RENAME WINS TO WON;
+ALTER TABLE BULLS RENAME WINS TO WON
+                         *
+ERROR at line 1:
+ORA-14155: missing PARTITION or SUBPARTITION keyword 
+
+
+SQL> ALTER TABLE BULLS RENAME COLUMN WINS TO WON;
+
+Table altered.
+
+SQL> ALTER TABLE BULLS RENAME COLUMN PRICE TO AMOUNT;
+
+Table altered.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                     BSIZE     AMOUNT        WON  MAHANANDI                                                                                                                             
+---------- -------------------- ---------- ---------- ---------- ----------                                                                                                                             
+       101 DHEERA                       62       99.9                     3                                                                                                                             
+       102 SIMHA                        62         89        120                                                                                                                                        
+       103 SAMARA                       61         40                                                                                                                                                   
+       104 CHATRAPATI                   63         80                     1                                                                                                                             
+       105 TYAGI                        61         60                     1                                                                                                                             
+       106 RNR GANDIVAM                 62     120.65        161          3                                                                                                                             
+
+6 rows selected.
+
+SQL> SPOOL OFF;
