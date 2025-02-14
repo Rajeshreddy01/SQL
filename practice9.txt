@@ -1,0 +1,1111 @@
+SQL> set pages 100 lines 100;
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+ITEMS                          TABLE                                                                
+PRODUCT                        TABLE                                                                
+BULLS                          TABLE                                                                
+
+7 rows selected.
+
+SQL> SELECT MOD(SAL,2) FROM EMP;
+
+MOD(SAL,2)                                                                                          
+----------                                                                                          
+         0                                                                                          
+         0                                                                                          
+         1                                                                                          
+         0                                                                                          
+         0                                                                                          
+         0                                                                                          
+         0                                                                                          
+         0                                                                                          
+         0                                                                                          
+         0                                                                                          
+         0                                                                                          
+         1                                                                                          
+         0                                                                                          
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE MOD(SAL,2)=0;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+
+11 rows selected.
+
+SQL> SELECT SQRT(9) FROM DUAL;
+
+   SQRT(9)                                                                                          
+----------                                                                                          
+         3                                                                                          
+
+SQL> SELECT SQRT(DEPTNO) FROM EMP;
+
+SQRT(DEPTNO)                                                                                        
+------------                                                                                        
+  3.16227766                                                                                        
+  4.47213595                                                                                        
+  4.47213595                                                                                        
+  5.47722558                                                                                        
+  3.16227766                                                                                        
+  4.47213595                                                                                        
+  3.16227766                                                                                        
+  4.47213595                                                                                        
+  5.47722558                                                                                        
+  4.47213595                                                                                        
+  3.16227766                                                                                        
+  3.16227766                                                                                        
+                                                                                                    
+  5.47722558                                                                                        
+
+14 rows selected.
+
+SQL> SELECT SQRT(SAL) FROM EMP;
+
+ SQRT(SAL)                                                                                          
+----------                                                                                          
+48.4767986                                                                                          
+28.2842712                                                                                          
+54.5435606                                                                                          
+53.3853913                                                                                          
+49.4974747                                                                                          
+54.7722558                                                                                          
+70.7106781                                                                                          
+33.1662479                                                                                          
+  30.82207                                                                                          
+54.7722558                                                                                          
+36.0555128                                                                                          
+99.9949999                                                                                          
+70.7106781                                                                                          
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT POWER(SAL,2) FROM EMP;
+
+POWER(SAL,2)                                                                                        
+------------                                                                                        
+     5522500                                                                                        
+      640000                                                                                        
+     8850625                                                                                        
+     8122500                                                                                        
+     6002500                                                                                        
+     9000000                                                                                        
+    25000000                                                                                        
+     1210000                                                                                        
+      902500                                                                                        
+     9000000                                                                                        
+     1690000                                                                                        
+    99980001                                                                                        
+    25000000                                                                                        
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT POWER(DEPTNO) FROM EMP;
+SELECT POWER(DEPTNO) FROM EMP
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT POWER(DEPTNO,2) FROM EMP;
+
+POWER(DEPTNO,2)                                                                                     
+---------------                                                                                     
+            100                                                                                     
+            400                                                                                     
+            400                                                                                     
+            900                                                                                     
+            100                                                                                     
+            400                                                                                     
+            100                                                                                     
+            400                                                                                     
+            900                                                                                     
+            400                                                                                     
+            100                                                                                     
+            100                                                                                     
+                                                                                                    
+            900                                                                                     
+
+14 rows selected.
+
+SQL> SELECT ABS(-29) FROM DUAL;
+
+  ABS(-29)                                                                                          
+----------                                                                                          
+        29                                                                                          
+
+SQL> SELECT ABS(-34.47) FROM DUAL;
+
+ABS(-34.47)                                                                                         
+-----------                                                                                         
+      34.47                                                                                         
+
+SQL> SELECT CEIL(9.4) FROM DUAL;
+
+ CEIL(9.4)                                                                                          
+----------                                                                                          
+        10                                                                                          
+
+SQL> SELECT CEIL(9.8) FROM DUAL;
+
+ CEIL(9.8)                                                                                          
+----------                                                                                          
+        10                                                                                          
+
+SQL> SELECT CEIL(-9.1) FROM DUAL;
+
+CEIL(-9.1)                                                                                          
+----------                                                                                          
+        -9                                                                                          
+
+SQL> SELECT CEIL(-9.8) FROM DUAL;
+
+CEIL(-9.8)                                                                                          
+----------                                                                                          
+        -9                                                                                          
+
+SQL> SELECT FLOOR(9.8) FROM DUAL;
+
+FLOOR(9.8)                                                                                          
+----------                                                                                          
+         9                                                                                          
+
+SQL> SELECT FLOOR(9.1) FROM DUAL;
+
+FLOOR(9.1)                                                                                          
+----------                                                                                          
+         9                                                                                          
+
+SQL> SELECT FLOOR(-9.1) FROM DUAL;
+
+FLOOR(-9.1)                                                                                         
+-----------                                                                                         
+        -10                                                                                         
+
+SQL> SELECT FLOOR(-9.8) FROM DUAL;
+
+FLOOR(-9.8)                                                                                         
+-----------                                                                                         
+        -10                                                                                         
+
+SQL> SELECT ROUND(9.4) FROM DUAL;
+
+ROUND(9.4)                                                                                          
+----------                                                                                          
+         9                                                                                          
+
+SQL> SELECT ROUND(9.5) FROM DUAL;
+
+ROUND(9.5)                                                                                          
+----------                                                                                          
+        10                                                                                          
+
+SQL> SELECT ROUND(-9.4) FROM DUAL;
+
+ROUND(-9.4)                                                                                         
+-----------                                                                                         
+         -9                                                                                         
+
+SQL> SELECT ROUND(-9.5) FROM DUAL;
+
+ROUND(-9.5)                                                                                         
+-----------                                                                                         
+        -10                                                                                         
+
+SQL> SELECT SQRT(SAL) FROM EMP;
+
+ SQRT(SAL)                                                                                          
+----------                                                                                          
+48.4767986                                                                                          
+28.2842712                                                                                          
+54.5435606                                                                                          
+53.3853913                                                                                          
+49.4974747                                                                                          
+54.7722558                                                                                          
+70.7106781                                                                                          
+33.1662479                                                                                          
+  30.82207                                                                                          
+54.7722558                                                                                          
+36.0555128                                                                                          
+99.9949999                                                                                          
+70.7106781                                                                                          
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT POWER(COMM,2) FROM EMP;
+
+POWER(COMM,2)                                                                                       
+-------------                                                                                       
+        40000                                                                                       
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+       490000                                                                                       
+                                                                                                    
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE MOD(SAL,2)=0;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+
+11 rows selected.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT MOD(HEIGTH,2) FROM BULLS;
+
+MOD(HEIGTH,2)                                                                                       
+-------------                                                                                       
+            0                                                                                       
+            1                                                                                       
+            0                                                                                       
+            0                                                                                       
+            1                                                                                       
+            1                                                                                       
+            0                                                                                       
+
+7 rows selected.
+
+SQL> SELECT MOD(BID,2) FROM BULLS;
+
+MOD(BID,2)                                                                                          
+----------                                                                                          
+         1                                                                                          
+         0                                                                                          
+         0                                                                                          
+         1                                                                                          
+         0                                                                                          
+         1                                                                                          
+         0                                                                                          
+
+7 rows selected.
+
+SQL> SELECT POWER(WON,2) FROM BULLS;
+
+POWER(WON,2)                                                                                        
+------------                                                                                        
+       40000                                                                                        
+       22801                                                                                        
+        2500                                                                                        
+       14400                                                                                        
+                                                                                                    
+       12100                                                                                        
+       25921                                                                                        
+
+7 rows selected.
+
+SQL> SELECT 'CHAR FUNCTIONS' FROM DUAL;
+
+'CHARFUNCTIONS                                                                                      
+--------------                                                                                      
+CHAR FUNCTIONS                                                                                      
+
+SQL> SELECT ENAME, LENGTH(ENAME) FROM EMP;
+
+ENAME      LENGTH(ENAME)                                                                            
+---------- -------------                                                                            
+SIDDU                  5                                                                            
+SMITH                  5                                                                            
+JONES                  5                                                                            
+BLAKE                  5                                                                            
+CLARK                  5                                                                            
+SCOTT                  5                                                                            
+KING                   4                                                                            
+ADAMS                  5                                                                            
+JAMES                  5                                                                            
+FORD                   4                                                                            
+MILLER                 6                                                                            
+RAJESH                 6                                                                            
+SUNIL                  5                                                                            
+KARTHEEK               8                                                                            
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT LENGTH(JOB) FROM EMP;
+
+LENGTH(JOB)                                                                                         
+-----------                                                                                         
+          8                                                                                         
+          5                                                                                         
+          7                                                                                         
+          7                                                                                         
+          7                                                                                         
+          7                                                                                         
+          9                                                                                         
+          5                                                                                         
+          5                                                                                         
+          7                                                                                         
+          5                                                                                         
+          8                                                                                         
+          7                                                                                         
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT * FROM BULLS
+  2  ;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT LENGTH(BNAME) FROM BULLS;
+
+LENGTH(BNAME)                                                                                       
+-------------                                                                                       
+            9                                                                                       
+            9                                                                                       
+            6                                                                                       
+            5                                                                                       
+           10                                                                                       
+            5                                                                                       
+           12                                                                                       
+
+7 rows selected.
+
+SQL> SELECT * FROM EMP WHERE LENGTH(JOB)>4;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+
+13 rows selected.
+
+SQL> SELECT * FROM EMP WHERE LENGTH(JOB)<=6;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT BNAME FROM BULLS WHERE LENGTH(ENAME)>7;
+SELECT BNAME FROM BULLS WHERE LENGTH(ENAME)>7
+                                     *
+ERROR at line 1:
+ORA-00904: "ENAME": invalid identifier 
+
+
+SQL> SELECT BNAME FROM BULLS WHERE LENGTH(BNAME)>7;
+
+BNAME                                                                                               
+--------------------                                                                                
+VEYMVARAM                                                                                           
+JONNAGIRI                                                                                           
+CHATRAPATI                                                                                          
+RNR GANDIVAM                                                                                        
+
+SQL> SELECT LOWER(BNAME) FROM BULLS;
+
+LOWER(BNAME)                                                                                        
+--------------------                                                                                
+veymvaram                                                                                           
+jonnagiri                                                                                           
+dheera                                                                                              
+simha                                                                                               
+chatrapati                                                                                          
+tyagi                                                                                               
+rnr gandivam                                                                                        
+
+7 rows selected.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT LOWER(ENAME) FROM EMP;
+
+LOWER(ENAM                                                                                          
+----------                                                                                          
+siddu                                                                                               
+smith                                                                                               
+jones                                                                                               
+blake                                                                                               
+clark                                                                                               
+scott                                                                                               
+king                                                                                                
+adams                                                                                               
+james                                                                                               
+ford                                                                                                
+miller                                                                                              
+rajesh                                                                                              
+sunil                                                                                               
+kartheek                                                                                            
+
+14 rows selected.
+
+SQL> SELECT LOWER(JOB) FROM EMP;
+
+LOWER(JOB                                                                                           
+---------                                                                                           
+engineer                                                                                            
+clerk                                                                                               
+manager                                                                                             
+manager                                                                                             
+manager                                                                                             
+analyst                                                                                             
+president                                                                                           
+clerk                                                                                               
+clerk                                                                                               
+analyst                                                                                             
+clerk                                                                                               
+chairman                                                                                            
+speaker                                                                                             
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT UPPER(ENAME) FROM EMP;
+
+UPPER(ENAM                                                                                          
+----------                                                                                          
+SIDDU                                                                                               
+SMITH                                                                                               
+JONES                                                                                               
+BLAKE                                                                                               
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+ADAMS                                                                                               
+JAMES                                                                                               
+FORD                                                                                                
+MILLER                                                                                              
+RAJESH                                                                                              
+SUNIL                                                                                               
+KARTHEEK                                                                                            
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE UPPER(ENAME) ;
+SELECT * FROM EMP WHERE UPPER(ENAME) 
+                                    *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT * UPPER(ENAME) FROM EMP;
+SELECT * UPPER(ENAME) FROM EMP
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT ENAME, LOWER(ENAME) FROM EMP;
+
+ENAME      LOWER(ENAM                                                                               
+---------- ----------                                                                               
+SIDDU      siddu                                                                                    
+SMITH      smith                                                                                    
+JONES      jones                                                                                    
+BLAKE      blake                                                                                    
+CLARK      clark                                                                                    
+SCOTT      scott                                                                                    
+KING       king                                                                                     
+ADAMS      adams                                                                                    
+JAMES      james                                                                                    
+FORD       ford                                                                                     
+MILLER     miller                                                                                   
+RAJESH     rajesh                                                                                   
+SUNIL      sunil                                                                                    
+KARTHEEK   kartheek                                                                                 
+
+14 rows selected.
+
+SQL> SELECT ENAME, LENGTH(ENAME) FROM EMP;
+
+ENAME      LENGTH(ENAME)                                                                            
+---------- -------------                                                                            
+SIDDU                  5                                                                            
+SMITH                  5                                                                            
+JONES                  5                                                                            
+BLAKE                  5                                                                            
+CLARK                  5                                                                            
+SCOTT                  5                                                                            
+KING                   4                                                                            
+ADAMS                  5                                                                            
+JAMES                  5                                                                            
+FORD                   4                                                                            
+MILLER                 6                                                                            
+RAJESH                 6                                                                            
+SUNIL                  5                                                                            
+KARTHEEK               8                                                                            
+
+14 rows selected.
+
+SQL> SELECT ENAME, TRIM(ENAME,2) FROM EMP;
+SELECT ENAME, TRIM(ENAME,2) FROM EMP
+                        *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT TRIM('HI HELLO ') FROM DUAL;
+
+TRIM('HI                                                                                            
+--------                                                                                            
+HI HELLO                                                                                            
+
+SQL> SELECT TRIM('H' FROM 'HELLO');
+SELECT TRIM('H' FROM 'HELLO')
+                            *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL>  SELECT TRIM('H' FROM 'HELLO') FROM DUAL;
+
+TRIM                                                                                                
+----                                                                                                
+ELLO                                                                                                
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT ENAME TRIM('S' FROM ENAME) FROM EMP;
+SELECT ENAME TRIM('S' FROM ENAME) FROM EMP
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT TRIM('S' FROM 'SQL') FROM DUAL;
+
+TR                                                                                                  
+--                                                                                                  
+QL                                                                                                  
+
+SQL> SELECT TRIM('   RAJESH  KUMAR ') FROM DUAL;
+
+TRIM('RAJESHK                                                                                       
+-------------                                                                                       
+RAJESH  KUMAR                                                                                       
+
+SQL> SELECT TRIM('A' FROM 'ASSAM') FROM DUAL;
+
+TRIM                                                                                                
+----                                                                                                
+SSAM                                                                                                
+
+SQL> SELECT SUBSTR('GOOD MORNIGN',4) FROM DUAL;
+
+SUBSTR('G                                                                                           
+---------                                                                                           
+D MORNIGN                                                                                           
+
+SQL> SELECT SUBSTR('GOOD MORNING',4) FROM DUAL;
+
+SUBSTR('G                                                                                           
+---------                                                                                           
+D MORNING                                                                                           
+
+SQL> SELECT SUBSTR('GOOD MORNING',-4) FROM DUAL;
+
+SUBS                                                                                                
+----                                                                                                
+NING                                                                                                
+
+SQL> SELECT SUBSTR('ENAME',3) FROM EMP;
+
+SUB                                                                                                 
+---                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+AME                                                                                                 
+
+14 rows selected.
+
+SQL> SELECT SUBSTR(ENAME,3) FROM EMP;
+
+SUBSTR(E                                                                                            
+--------                                                                                            
+DDU                                                                                                 
+ITH                                                                                                 
+NES                                                                                                 
+AKE                                                                                                 
+ARK                                                                                                 
+OTT                                                                                                 
+NG                                                                                                  
+AMS                                                                                                 
+MES                                                                                                 
+RD                                                                                                  
+LLER                                                                                                
+JESH                                                                                                
+NIL                                                                                                 
+RTHEEK                                                                                              
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT JOB, SUBSTR(JOB,-4) FROM EMP;
+
+JOB       SUBS                                                                                      
+--------- ----                                                                                      
+ENGINEER  NEER                                                                                      
+CLERK     LERK                                                                                      
+MANAGER   AGER                                                                                      
+MANAGER   AGER                                                                                      
+MANAGER   AGER                                                                                      
+ANALYST   LYST                                                                                      
+PRESIDENT DENT                                                                                      
+CLERK     LERK                                                                                      
+CLERK     LERK                                                                                      
+ANALYST   LYST                                                                                      
+CLERK     LERK                                                                                      
+CHAIRMAN  RMAN                                                                                      
+SPEAKER   AKER                                                                                      
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT SUBSTR(ENAME,3,6) FROM EMP;
+
+SUBSTR                                                                                              
+------                                                                                              
+DDU                                                                                                 
+ITH                                                                                                 
+NES                                                                                                 
+AKE                                                                                                 
+ARK                                                                                                 
+OTT                                                                                                 
+NG                                                                                                  
+AMS                                                                                                 
+MES                                                                                                 
+RD                                                                                                  
+LLER                                                                                                
+JESH                                                                                                
+NIL                                                                                                 
+RTHEEK                                                                                              
+
+14 rows selected.
+
+SQL> SELECT SUBSTR('GOOD MORNING',4,6) FROM DUAL;
+
+SUBSTR                                                                                              
+------                                                                                              
+D MORN                                                                                              
+
+SQL> SELECT SUBSTR('MORNING', 2,4) FROM DUAL;
+
+SUBS                                                                                                
+----                                                                                                
+ORNI                                                                                                
+
+SQL> SELECT SUBSTR(JOB,2,4) FROM EMP;
+
+SUBS                                                                                                
+----                                                                                                
+NGIN                                                                                                
+LERK                                                                                                
+ANAG                                                                                                
+ANAG                                                                                                
+ANAG                                                                                                
+NALY                                                                                                
+RESI                                                                                                
+LERK                                                                                                
+LERK                                                                                                
+NALY                                                                                                
+LERK                                                                                                
+HAIR                                                                                                
+PEAK                                                                                                
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT BNAME, SUNSTR(BNAME,2,4) FROM BULLS;
+SELECT BNAME, SUNSTR(BNAME,2,4) FROM BULLS
+              *
+ERROR at line 1:
+ORA-00904: "SUNSTR": invalid identifier 
+
+
+SQL> SELECT BNAME SUBSTR(BNAME,2,4) FROM BULLS;
+SELECT BNAME SUBSTR(BNAME,2,4) FROM BULLS
+                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT BNAME, SUBSTR(BNAME,2,4) FROM BULLS;
+
+BNAME                SUBS                                                                           
+-------------------- ----                                                                           
+VEYMVARAM            EYMV                                                                           
+JONNAGIRI            ONNA                                                                           
+DHEERA               HEER                                                                           
+SIMHA                IMHA                                                                           
+CHATRAPATI           HATR                                                                           
+TYAGI                YAGI                                                                           
+RNR GANDIVAM         NR G                                                                           
+
+7 rows selected.
+
+SQL> SELECT ENAME, LENGTH(ENAME) FROM EMP;
+
+ENAME      LENGTH(ENAME)                                                                            
+---------- -------------                                                                            
+SIDDU                  5                                                                            
+SMITH                  5                                                                            
+JONES                  5                                                                            
+BLAKE                  5                                                                            
+CLARK                  5                                                                            
+SCOTT                  5                                                                            
+KING                   4                                                                            
+ADAMS                  5                                                                            
+JAMES                  5                                                                            
+FORD                   4                                                                            
+MILLER                 6                                                                            
+RAJESH                 6                                                                            
+SUNIL                  5                                                                            
+KARTHEEK               8                                                                            
+
+14 rows selected.
+
+SQL> SELECT UPPER(ENAME) FROM EMP;
+
+UPPER(ENAM                                                                                          
+----------                                                                                          
+SIDDU                                                                                               
+SMITH                                                                                               
+JONES                                                                                               
+BLAKE                                                                                               
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+ADAMS                                                                                               
+JAMES                                                                                               
+FORD                                                                                                
+MILLER                                                                                              
+RAJESH                                                                                              
+SUNIL                                                                                               
+KARTHEEK                                                                                            
+
+14 rows selected.
+
+SQL> SELECT LOWER(ENAME) FROM EMP;
+
+LOWER(ENAM                                                                                          
+----------                                                                                          
+siddu                                                                                               
+smith                                                                                               
+jones                                                                                               
+blake                                                                                               
+clark                                                                                               
+scott                                                                                               
+king                                                                                                
+adams                                                                                               
+james                                                                                               
+ford                                                                                                
+miller                                                                                              
+rajesh                                                                                              
+sunil                                                                                               
+kartheek                                                                                            
+
+14 rows selected.
+
+SQL> SELECT TRIM(ENAME,2) FROM EMP;
+SELECT TRIM(ENAME,2) FROM EMP
+                 *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT TRIM('GOOD MORNING  ');
+SELECT TRIM('GOOD MORNING  ')
+                            *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT TRIM('GOOD MORNING  ') FROM DUAL;
+
+TRIM('GOODMO                                                                                        
+------------                                                                                        
+GOOD MORNING                                                                                        
+
+SQL> SELECT TRIM('H' FROM 'HI') FROM DUAL;
+
+T                                                                                                   
+-                                                                                                   
+I                                                                                                   
+
+SQL> SELECT TRIM('T' FROM 'TUESDAY') FROM DUAL;
+
+TRIM('                                                                                              
+------                                                                                              
+UESDAY                                                                                              
+
+SQL> SELECT TRIM('S' FROM 'TUESDAY') FROM DUAL;
+
+TRIM('S                                                                                             
+-------                                                                                             
+TUESDAY                                                                                             
+
+SQL> SELECT REPLACE(ENAME,'A') FROM EMP;
+
+REPLACE(EN                                                                                          
+----------                                                                                          
+SIDDU                                                                                               
+SMITH                                                                                               
+JONES                                                                                               
+BLKE                                                                                                
+CLRK                                                                                                
+SCOTT                                                                                               
+KING                                                                                                
+DMS                                                                                                 
+JMES                                                                                                
+FORD                                                                                                
+MILLER                                                                                              
+RJESH                                                                                               
+SUNIL                                                                                               
+KRTHEEK                                                                                             
+
+14 rows selected.
+
+SQL> SELECT REPLACE('QWERTY','E') FROM DUAL;
+
+REPLA                                                                                               
+-----                                                                                               
+QWRTY                                                                                               
+
+SQL> SELECT REPLACE('GOOD MORNING', 'MORNING','EVENING') FROM DUAL;
+
+REPLACE('GOO                                                                                        
+------------                                                                                        
+GOOD EVENING                                                                                        
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT REPLACE(ENAME,'Q',4) FROM EMP;
+
+REPLACE(EN                                                                                          
+----------                                                                                          
+SIDDU                                                                                               
+SMITH                                                                                               
+JONES                                                                                               
+BLAKE                                                                                               
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+ADAMS                                                                                               
+JAMES                                                                                               
+FORD                                                                                                
+MILLER                                                                                              
+RAJESH                                                                                              
+SUNIL                                                                                               
+KARTHEEK                                                                                            
+
+14 rows selected.
+
+SQL> SELECT REPLACE(BNAME, 'A','Q') FROM BULLS;
+
+REPLACE(BNAME,'A','Q                                                                                
+--------------------                                                                                
+VEYMVQRQM                                                                                           
+JONNQGIRI                                                                                           
+DHEERQ                                                                                              
+SIMHQ                                                                                               
+CHQTRQPQTI                                                                                          
+TYQGI                                                                                               
+RNR GQNDIVQM                                                                                        
+
+7 rows selected.
+
+SQL> SPOOL;
+currently spooling to C:\Users\Rajesh kumar Reddy V\Desktop\Sql\practice9.txt
+SQL> SPOOL OFF;
