@@ -1,0 +1,653 @@
+SQL> set pages 100 lines 100;
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+ITEMS                          TABLE                                                                
+PRODUCT                        TABLE                                                                
+BULLS                          TABLE                                                                
+
+7 rows selected.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        11 TESTING        ASSAM                                                                     
+        10 ASGARD         NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+        50 DEVOLOPMENT    INDIA                                                                     
+        60 QWERTY         BANGALORE                                                                 
+
+7 rows selected.
+
+SQL> SELECT * FROM BULLS;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       101 DHEERA                       62       99.9         50          3                         
+       102 SIMHA                        62         89        120                                    
+       104 CHATRAPATI                   63         80                     1                         
+       105 TYAGI                        61         60        110          1                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+
+7 rows selected.
+
+SQL> SELECT BNAME FROM BULLS ORDER BY BNAME;
+
+BNAME                                                                                               
+--------------------                                                                                
+CHATRAPATI                                                                                          
+DHEERA                                                                                              
+JONNAGIRI                                                                                           
+RNR GANDIVAM                                                                                        
+SIMHA                                                                                               
+TYAGI                                                                                               
+VEYMVARAM                                                                                           
+
+7 rows selected.
+
+SQL> SELECT * FROM BULLS ORDER BY AMOUNT;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       105 TYAGI                        61         60        110          1                         
+       108 JONNAGIRI                    61      60.67        151          0                         
+       104 CHATRAPATI                   63         80                     1                         
+       102 SIMHA                        62         89        120                                    
+       101 DHEERA                       62       99.9         50          3                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+
+7 rows selected.
+
+SQL> SELECT * FROM BULLS ORDER BY WON;
+
+       BID BNAME                    HEIGTH     AMOUNT        WON  MAHANANDI                         
+---------- -------------------- ---------- ---------- ---------- ----------                         
+       101 DHEERA                       62       99.9         50          3                         
+       105 TYAGI                        61         60        110          1                         
+       102 SIMHA                        62         89        120                                    
+       108 JONNAGIRI                    61      60.67        151          0                         
+       106 RNR GANDIVAM                 62     120.65        161          3                         
+       107 VEYMVARAM                    62      200.5        200          5                         
+       104 CHATRAPATI                   63         80                     1                         
+
+7 rows selected.
+
+SQL> SELECT * FROM DEPT ORDER BY DNAME;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ASGARD         NEW YORK                                                                  
+        50 DEVOLOPMENT    INDIA                                                                     
+        40 OPERATIONS     BOSTON                                                                    
+        60 QWERTY         BANGALORE                                                                 
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        11 TESTING        ASSAM                                                                     
+
+7 rows selected.
+
+SQL> SELECT * FROM EMP ORDER BY JOB;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE JOB IN ('MANAGER','CLERK') ORDER BY JOB;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+
+7 rows selected.
+
+SQL> SELECT * FROM EMP ORDER BY SAL DESC, JOB ASC;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      4566 KARTHEEK                   7876                                         30               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+
+14 rows selected.
+
+SQL> SELECT JOB, SAL FROM EMP ORDER SAL DESC, JOB ASC;
+SELECT JOB, SAL FROM EMP ORDER SAL DESC, JOB ASC
+                               *
+ERROR at line 1:
+ORA-00924: missing BY keyword 
+
+
+SQL> SELECT JOB, SAL FROM EMP ORDER BY SAL DESC, JOB ASC;
+
+JOB              SAL                                                                                
+--------- ----------                                                                                
+                                                                                                    
+CHAIRMAN        9999                                                                                
+PRESIDENT       5000                                                                                
+SPEAKER         5000                                                                                
+ANALYST         3000                                                                                
+ANALYST         3000                                                                                
+MANAGER         2975                                                                                
+MANAGER         2850                                                                                
+MANAGER         2450                                                                                
+ENGINEER        2350                                                                                
+CLERK           1300                                                                                
+CLERK           1100                                                                                
+CLERK            950                                                                                
+CLERK            800                                                                                
+
+14 rows selected.
+
+SQL> SELECT JOB, SAL FROM EMP ORDER BY JOB ASC, SAL DESC;
+
+JOB              SAL                                                                                
+--------- ----------                                                                                
+ANALYST         3000                                                                                
+ANALYST         3000                                                                                
+CHAIRMAN        9999                                                                                
+CLERK           1300                                                                                
+CLERK           1100                                                                                
+CLERK            950                                                                                
+CLERK            800                                                                                
+ENGINEER        2350                                                                                
+MANAGER         2975                                                                                
+MANAGER         2850                                                                                
+MANAGER         2450                                                                                
+PRESIDENT       5000                                                                                
+SPEAKER         5000                                                                                
+                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT 'ROWNUM' FROM DUAL;
+
+'ROWNU                                                                                              
+------                                                                                              
+ROWNUM                                                                                              
+
+SQL> SELECT * FROM EMP ROWNUM <5;
+SELECT * FROM EMP ROWNUM <5
+                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT * FROM EMP WHERE ROWNUM <5;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE ROWNUM <=9;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+
+9 rows selected.
+
+SQL> SELECT * FROM EMP WHERE ROWNUM >5;
+
+no rows selected
+
+SQL> SELECT ENAME FROM EMP WHERE ROWNUM >=1;
+
+ENAME                                                                                               
+----------                                                                                          
+SIDDU                                                                                               
+SMITH                                                                                               
+JONES                                                                                               
+BLAKE                                                                                               
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+ADAMS                                                                                               
+JAMES                                                                                               
+FORD                                                                                                
+MILLER                                                                                              
+RAJESH                                                                                              
+SUNIL                                                                                               
+KARTHEEK                                                                                            
+
+14 rows selected.
+
+SQL>  SELECT 'DISTINCT' FROM DUAL;
+
+'DISTINC                                                                                            
+--------                                                                                            
+DISTINCT                                                                                            
+
+SQL> SELECT DISTINCT SAL FROM EMP;
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+      5000                                                                                          
+      1300                                                                                          
+                                                                                                    
+      2350                                                                                          
+      2850                                                                                          
+      9999                                                                                          
+      2975                                                                                          
+      1100                                                                                          
+      3000                                                                                          
+       800                                                                                          
+       950                                                                                          
+
+12 rows selected.
+
+SQL> SELECT DISTINCT SAL FROM EMP;
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+      5000                                                                                          
+      1300                                                                                          
+                                                                                                    
+      2350                                                                                          
+      2850                                                                                          
+      9999                                                                                          
+      2975                                                                                          
+      1100                                                                                          
+      3000                                                                                          
+       800                                                                                          
+       950                                                                                          
+
+12 rows selected.
+
+SQL> SELECT * FROM EMP ORDER BY ENAME;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      4566 KARTHEEK                   7876                                         30               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+
+14 rows selected.
+
+SQL> SELECT DISTINCT SAL FROM EMP ORDER BY SAL;
+
+       SAL                                                                                          
+----------                                                                                          
+       800                                                                                          
+       950                                                                                          
+      1100                                                                                          
+      1300                                                                                          
+      2350                                                                                          
+      2450                                                                                          
+      2850                                                                                          
+      2975                                                                                          
+      3000                                                                                          
+      5000                                                                                          
+      9999                                                                                          
+                                                                                                    
+
+12 rows selected.
+
+SQL> SELECT DISTINCT SAL FROM EMP;
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+      5000                                                                                          
+      1300                                                                                          
+                                                                                                    
+      2350                                                                                          
+      2850                                                                                          
+      9999                                                                                          
+      2975                                                                                          
+      1100                                                                                          
+      3000                                                                                          
+       800                                                                                          
+       950                                                                                          
+
+12 rows selected.
+
+SQL> SELECT SAL FROM (SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) WHERE ROWNUM<=3;
+
+       SAL                                                                                          
+----------                                                                                          
+                                                                                                    
+      9999                                                                                          
+      5000                                                                                          
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> ALTER TABLE EMP ADD MGR=7344 WHERE ENAME IS 'KING';
+ALTER TABLE EMP ADD MGR=7344 WHERE ENAME IS 'KING'
+                       *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> UPDATE EMP SET MGR = 7344 WHERE ENAME = 'KING';
+
+1 row updated.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT       7344 17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> SELECT DISTINCT SAL FROM EMP ORDER BY SAL;
+
+       SAL                                                                                          
+----------                                                                                          
+       800                                                                                          
+       950                                                                                          
+      1100                                                                                          
+      1300                                                                                          
+      2350                                                                                          
+      2450                                                                                          
+      2850                                                                                          
+      2975                                                                                          
+      3000                                                                                          
+      5000                                                                                          
+      9999                                                                                          
+                                                                                                    
+
+12 rows selected.
+
+SQL> SELECT ROWNUM FROM EMP;
+
+    ROWNUM                                                                                          
+----------                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE ROWNUM<=5;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+
+SQL> SELECT SAL FROM (SELECT DISTINCT SAL FROM EMP ORDER BY SAL) WHERE ROWNUM<=3;
+
+       SAL                                                                                          
+----------                                                                                          
+       800                                                                                          
+       950                                                                                          
+      1100                                                                                          
+
+SQL> SELECT SAL FROM (SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) WHERE ROWNUM<=3;
+
+       SAL                                                                                          
+----------                                                                                          
+                                                                                                    
+      9999                                                                                          
+      5000                                                                                          
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT       7344 17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                                         30               
+
+14 rows selected.
+
+SQL> UPDATE TABLE EMP SET SAL = 4999 WHERE EMPNO=4566;
+UPDATE TABLE EMP SET SAL = 4999 WHERE EMPNO=4566
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> UPDATE EMP SET SAL = 4999 WHERE ENAME = 'KARTHEEK';
+
+1 row updated.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT       7344 17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                 4999                    30               
+
+14 rows selected.
+
+SQL> SELECT SAL FROM (SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) WHERE ROWNUM <=3;
+
+       SAL                                                                                          
+----------                                                                                          
+      9999                                                                                          
+      5000                                                                                          
+      4999                                                                                          
+
+SQL> SELECT * FROM (SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) WHERE ROWNUM <=3 ORDER BY SAL;
+
+       SAL                                                                                          
+----------                                                                                          
+      4999                                                                                          
+      5000                                                                                          
+      9999                                                                                          
+
+SQL> SELECT * FROM (SELECT DISTINCT SAL FROM EMP ORDER BY SAL) WHERE ROWNUM <=3;
+
+       SAL                                                                                          
+----------                                                                                          
+       800                                                                                          
+       950                                                                                          
+      1100                                                                                          
+
+SQL> SELECT SAL FROM ( SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) ROWNUM<=3 ORDER BY SAL;
+SELECT SAL FROM ( SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) ROWNUM<=3 ORDER BY SAL
+                                                                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT SAL FROM ( SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC) WHERE ROWNUM <=3 ORDER BY SAL;
+
+       SAL                                                                                          
+----------                                                                                          
+      4999                                                                                          
+      5000                                                                                          
+      9999                                                                                          
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR JOINDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7800 SIDDU      ENGINEER        7839 08-FEB-24       2350        200         10               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT       7344 17-NOV-81       5000                    10               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+      7344 RAJESH     CHAIRMAN        7988 12-MAY-00       9999        700         10               
+      7988 SUNIL      SPEAKER         7902 04-FEB-22       5000                                     
+      4566 KARTHEEK                   7876                 4999                    30               
+
+14 rows selected.
+
+SQL> spool off;
